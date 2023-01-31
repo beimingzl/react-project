@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电影列表实现</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react_dom.js"></script>
+  <script src="../lib/babel.min.js"></script>
+  <script type="text/babel">
+    class App extends React.Component{
+      constructor(){
+        super()
+        this.state = {
+          movies:["x","y","z"]
+        }
+      }
+
+      // 渲染
+      render(){
+        // 方法一：使用 for 循环
+        // const liEls = []
+        // for(let i=0;i< this.state.movies.length;i++){
+        //   const movie = this.state.movies[i]
+        //   const liEl = <li key={movie}>{movie}</li>
+        //   liEls.push(liEl)
+        // }
+        
+        // 方法二：使用 map
+          // const liEls = this.state.movies.map(item=><li key={item}>{item}</li>)
+        return (
+          <div>
+            {/*
+              <li>item</li>
+            */}
+            {/*
+              <h2>{liEls}</h2>
+            */}
+            {/*
+            <h2>{liEls}</h2>
+            */}
+            <h2>{this.state.movies.map(item=><li key={item}>{item}</li>)}</h2>
+          </div>
+        )
+      }
+    }
+    // 渲染根节点
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    // 添加组件
+    root.render(<App/>)
+  </script>
+
+</body>
+
+</html>
