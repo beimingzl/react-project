@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSX的事件绑定</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react_dom.js"></script>
+  <script src="../lib/babel.min.js"></script>
+
+  <script type="text/babel">
+    // 定义 App 根组件
+    class App extends React.Component{
+      // 定义数据
+      constructor(){
+        super()
+        this.state ={
+          counter:100
+        }
+      }
+
+      // 事件方法
+      btn1Click(){
+        this.setState({counter:this.state.counter + 1})
+      }
+      btn2Click = ()=>{
+        this.setState({counter:this.state.counter + 1})
+      }
+      btn3Click(){
+        this.setState({counter:this.state.counter + 1})
+      }
+      // 渲染
+      render(){
+        const {counter} = this.state
+        return (
+          <div>
+            <h2>当前计数:{counter}</h2>
+            {/* 使用bind绑定*/}
+            <button onClick={this.btn1Click.bind(this)}>按钮1</button>
+            {/* ES6 class fields */}
+            <button onClick={this.btn2Click}>按钮2</button>
+            {/* 传入一个箭头函数--使用最多*/}
+            <button onClick={()=>this.btn3Click()}>按钮3</button>
+            </div>
+        )
+      }
+
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+  </script>
+
+</body>
+
+</html>
