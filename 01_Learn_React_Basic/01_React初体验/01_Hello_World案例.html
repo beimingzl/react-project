@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+</head>
+
+<body>
+  <!-- 通过 react 渲染出 Hello World -->
+
+  <div id="root"></div>
+  <div id="app"></div>
+
+  <!-- react 开发需要依赖三个库 -->
+  <!-- react:包含 react 所必须的核心源码 -->
+  <!-- react-dom: react 渲染在不同平台所需要的核心源码 (react web/react-native) -->
+  <!-- babel:将 jsx 代码转化为 react 代码的工具 -->
+
+  <!-- 通过 CDN 引入所需依赖 -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    // 编写 React 代码(jsx语法,type="text/babel")
+    // jsx => babel转换 => js
+
+    // 渲染 Hello React
+    // React18之前：ReactDOM.render
+    // ReactDOM.render(<h2>hello react</h2>,document.querySelector("#root"))
+
+    // react 18
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<h2>Hello World</h2>)
+
+    const app = ReactDOM.createRoot(document.querySelector("#app"))
+    app.render(<h2>第一个 react app</h2>)
+  </script>
+</body>
+
+</html>

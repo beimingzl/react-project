@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>条件渲染</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react_dom.js"></script>
+  <script src="../lib/babel.min.js"></script>
+
+  <script type="text/babel">
+    class App extends React.Component{
+      constructor(){
+        super()
+        this.state = {
+          message:'hello world',
+          isReady:false
+        }
+      }
+      btnClick(){
+        this.setState({
+          isReady : !this.state.isReady
+        })
+      }
+      render(){
+        const {message,isReady} = this.state
+        return (
+          <div>
+            <h2> {message}</h2>
+
+            {/* 三元运算符 */}
+            {isReady ? <h2>{message}</h2>:null}
+            
+            {/* 逻辑与运算 */}
+            { isReady && <h2>{message}</h2>}
+
+            <button onClick = {()=> this.btnClick()}>显示/隐藏</button>
+            
+            </div>
+        )
+      }
+    }
+     // 2.创建root并且渲染App组件
+     const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件参数传递</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react_dom.js"></script>
+  <script src="../lib/babel.min.js"></script>
+
+  <script type="text/babel">
+    // 定义 App 根组件
+    class App extends React.Component{
+      // 定义数据
+      constructor(){
+        super()
+        this.state ={
+          message:'请查看控制台输出'
+        }
+      }
+
+      // 事件方法
+      btn1Click(event){
+       console.log('event:',event);
+      }
+      btn2Click(event,name,age){
+       console.log('event:',event,'name:',name,'age',age);
+      }
+     
+      // 渲染
+      render(){
+        const {message} = this.state
+        return (
+          <div>
+            <h2>{message}</h2>
+            <button onClick={(event)=>this.btn1Click(event)}>event事件传递</button>
+            <button onClick={(event)=>this.btn2Click(event,'why',18)}>多参数传递</button>
+          </div>
+        )
+      }
+
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+  </script>
+
+</body>
+
+</html>
